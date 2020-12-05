@@ -1,5 +1,5 @@
 import os
-os.chdir(r'C:\Users\LTM0110User\Desktop\COREMAX')
+os.chdir(r'C:\Users\Carniani\Desktop\Project')
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -22,19 +22,10 @@ from sklearn.neural_network import MLPClassifier
 #RESAMPLING + DATABASE
 N=90
 
-
-#[Logs,Cores,Cores2,Logs2]=OpenRaw(2,1) 
-#[RicCores,RicLogs]=Resampling(Logs,Cores,N,1)    
-##RicCores2,RicLogs2]=Resampling(Logs2,Cores2,N,1)    
-#DATABASE=BuildDB2(RicCores,RicLogs,N,np.zeros(500),3,3)
-#BLIND=BuildDB2(RicCores2, RicLogs2,N)
-#DATABASE=pd.DataFrame(DATABASE)
-#DATABASE.to_pickle('./Dato_Finale/Tr90_CarotapienaBT2_Meglio')
-
 #Load Dataset
 nome='BT2Finale_Spezzoni'
 print(nome)
-DATABASE=pd.read_pickle('C:/Users/LTM0110User/Desktop/COREMAX/Dato_Finale/Sliding_Window_FBS')
+DATABASE=pd.read_pickle('C:/Users/Carniani/Desktop/Project/Dato_Finale/'+ nome)
 DATABASE=np.array(DATABASE)
 X=DATABASE[:,0:-1]
 y=DATABASE[:,-1]
