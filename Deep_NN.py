@@ -31,8 +31,7 @@ Accuracy=metrics.accuracy_score(yt, ypred)
 
 
 
-Accuracy_Bal=metrics.balanced_accuracy_score(yt, fisso)
-# pipe.fit( DATABASE[:,0:Div*2+2], DATABASE[:,Div*2+2:Div*2+3] )
+Accuracy_Bal=metrics.balanced_accuracy_score(yt, fisso) 
 yp2=pipe.predict(DBX)
 fisso2=yp2.astype(int)
 Accuracy_Blind=metrics.accuracy_score(DBY,yp2)
