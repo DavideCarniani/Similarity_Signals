@@ -1,5 +1,5 @@
 import os
-os.chdir(r'/scratch1/dbstudi/eid0107949/COREMAX')
+os.chdir(r'C:\Users\Carniani\Desktop\Project')
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
