@@ -4,7 +4,7 @@ import seaborn as sns
 import numpy as np
 import scipy as sc  
 from sklearn.pipeline import Pipeline
-# This program allow the operator to bring a core in the depth matching position by visualizing the core and the log and writing the number of meters for the shift
+# This program allows the operator to bring a core in the depth matching position by visualizing the core and the log and writing the number of meters for the shift
 def MessaInDepth(RicCore, RicLogs): 
     N=RicCores[0].shape[0]
     R=len(RicCores)
