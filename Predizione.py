@@ -1,5 +1,5 @@
 import os
-os.chdir(r'C:\Users\LTM0110User\Desktop\COREMAX')
+os.chdir(r'C:\Users\Carniani\Desktop\Project')
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -18,8 +18,9 @@ from MessaInDepth import MessaInDepth
 from joblib import dump, load
 import matplotlib.gridspec as grds
 from Metrics import SignalStats
-
-listaMov=[1.5,-1.25,9.5,0.4,0.25,4]
+# This program allow to perform automatic depth matching by loading a dataset and performing a 2-steps-Shift using 2 neural networks. The probability of shift are visualized
+# in a subplot
+listaMov=[1.5,-1.25,9.5,0.4,0.25,4] #This are the shift value sampled using the Depth matching program
 #Loading test dataset
 N=90
 [Cores2,Logs2]=OpenRaw(2,0) 
@@ -29,8 +30,8 @@ Xt=BLIND[:,0:-1]
 yt=BLIND[:,-1]
 
 #Loading models
-BestPipe=load('./MLModels/MigliorMod90BT2Finale_Carotapiena')
-BestPiperef=load('./MLModels/MigliorMod90BT2Finale_Carotapiena')
+BestPipe=load('./MLModels/MigliorMod90BT2Final')# NN for bulk shift
+BestPiperef=load('./MLModels/MigliorMod90BT2Final') # NN for refined shift
 
 # Prediction of the original and transformed signal
 yp2=BestPipe.predict_proba(Xt)
@@ -51,11 +52,11 @@ fromto=[]
 for cores in RicCores2:
      fromto.append(int(10/np.diff(cores.Depth).min())) 
      
-#for i in range(0,6,1):
-#     print(i) Sec=yp3[i*Space:(i+1)*Space].copy()
-#     Sec=Sec/max(Sec)
-#     Pos.append(np.argmin(abs(Sec-Sec.max())))
-#     ypz[0,i*Space+Pos[i]]=1
+for i in range(0,6,1):
+     print(i) Sec=yp3[i*Space:(i+1)*Space].copy()
+     Sec=Sec/max(Sec)
+     Pos.append(np.argmin(abs(Sec-Sec.max())))
+     ypz[0,i*Space+Pos[i]]=1
 
 ypz=np.zeros([1,len(BLIND)])
 space=0;j=0;k=0
@@ -64,7 +65,7 @@ fig=plt.figure(figsize=(10,7))
 gs= grds.GridSpec(2,3,fig )
 
 Mossa=[]
-for i in fromto:
+for i in fromto: # Subplots of probabilities
      D=np.diff(RicCores2[j].Depth).min()
      space1=space
      space=i*2+space
