@@ -1,4 +1,5 @@
 import numpy as np
+#This program add to a certain signal a gaussian. The porpouse is to simulate a peak of noise.
 def G_R_Peaks(N):
      x=np.arange(-5,5,10/N)
      mu=np.random.uniform(-4,4)
